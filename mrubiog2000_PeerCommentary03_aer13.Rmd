@@ -20,6 +20,8 @@ zombies <- read.csv("zombies.csv", header = TRUE)
 ```{r}
 ##Miguel: I cannot acces the data this way because I am using a different computer. Next time you can try the following so everyone with whom you share your code can access it:
 
+library(curl)
+
 f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN588_Fall21/zombies.csv")
 zombies <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
 ```
@@ -188,6 +190,12 @@ z
 ```
 both the height and the weight plots show a direct, positive relationship between age and height, and age and weight. I found it surprising that there seems to be a stronger relationship between age and height than there is for age and weight... I would expect there to be a stronger relationship between age and height in people's 20's because humans don't usually grow taller after like 18.... or maybe thats just me... 
 
+```{r}
+##Miguel: Awesome plots! I really like how you colored the dots for male and female (I tried to do so but I failed) and added the legend at the bottom of the plot. 
+##Miguel: It is not necessary to do several lines of code, you can just write: "z <- ggplot(______) + geom_point()" in one line and it works. Probably the legend can be added to the single line after a "+" too.
+```
+
+
 
 ##4. Using histograms and Q-Q plots, check whether the quantitative variables seem to be drawn from a normal distribution. Which seem to be and which do not (hint: not all are drawn from the normal distribution)? For those that are not normal, can you determine from which common distribution they are drawn?
 
@@ -254,6 +262,12 @@ population_mean_years_of_education
 qqnorm(e, main = "QQ plot of Zombie Killer Years of Education")
 qqline(e, col = "gray") #QQplot looks just like plot zombie kills 
 ```
+
+
+```{r}
+##Miguel: Good job. You can use the "par()" function to show several plots at the same time in R histograms.
+```
+
 
 ##For those that are not normal, can you determine from which common distribution they are drawn? 
 
@@ -399,6 +413,11 @@ poisson95CI = function(x) {
 poisson95CI(x)
 ```
 
+```{r}
+##Miguel: I used 1.96 for the upper, but 2.58 for the lower. I'm not sure way, but those were the numbers I found when seeking for how to do the CI for the Poisson Distribution in google. I think I will ask the professor because I do not understand it well.
+```
+
+
 ###years of education 
   create sample  
 ```{r}
@@ -426,6 +445,11 @@ se_years_of_education
 x <- mean(sample_years_of_education)
 poisson95CI(x)
 ```
+
+```{r}
+##Miguel: Good job. For this question, I would use the sample function to obtain 30 individual and then calculate the mean and sd of each variable, instead of sampling for each variable (I think is faster), but your way is ok!. To do so, you can use the function "sample_n" from "dplyr" package.
+```
+
 
 ##6. Now draw 99 more random samples of 30 zombie apocalypse survivors, and calculate the mean for each variable for each of these samples. Together with the first sample you drew, you now have a set of 100 means for each variable (each based on 30 observations), which constitutes a sampling distribution for each variable. 
 
@@ -540,6 +564,14 @@ this is similar to the standard error value from 5 (0.3956178)
 
 ```{r}
 hist(sampling_distribution) #looks like a normal distribution 
+```
+
+```{r}
+##Miguel: Nice job! I learnt a lot from the structure of your loop and how to directly calculate the mean within the loop, thank you! I thought we could not use "Replacement = FALSE" here because there are not enough survivors to sample (99*30), but yours seem to work, so I guess it is ok.
+```
+
+```{r}
+##Miguel: Really good job! I think you managed to do all questions quite well :) Personally, I sometimes find your coding a bit long due to big number of divisions in the code for each variable, but if this is the way that works for you, it is totally fine.
 ```
 
 
