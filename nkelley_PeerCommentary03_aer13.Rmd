@@ -1,5 +1,5 @@
 ---
-title: "aer13_OriginalHomeworkCode_03"
+title: "nkelley_PeerCommentary03_aer13.Rmd"
 author: "Abby_Robinson"
 date: "10/7/2021"
 output: html_document
@@ -14,6 +14,7 @@ setwd("/Users/AbbyRobinson/Desktop/BIOANTHRO STATS")
 zombies <- read.csv("zombies.csv", header = TRUE)
 zombies
 ```
+NK: I'm sure this works on your own computer, but anyone who is not on your desktop cannot access the data. 
 
 ##1. Calculate the population mean and standard deviation for each quantitative random variable (height, weight, age, number of zombies killed, and years of education). NOTE: You will not want to use the built in var() and sd() commands as these are for samples.
 
@@ -95,6 +96,8 @@ x <- zombies$years_of_education
 pop_sd(x)
 ```
 
+NK: I found that if I selected the quantitative variables from the data frame, I was then able to use cbind and apply to quickly calculate all of the means and standard deviations and produce a new data frame with this information. I specified the new columns as needed, and included the calculations as the definition of each column. This saved me a lot of time, although it might defeat the learning opportunity involved in walking step by step through each calculation. 
+
 ##2. Use {ggplot} to make boxplots of each of these variables by gender.
 
 ```{r}
@@ -167,6 +170,7 @@ z
 ```
 both the height and the weight plots show a direct, positive relationship between age and height, and age and weight. I found it surprising that there seems to be a stronger relationship between age and height than there is for age and weight... I would expect there to be a stronger relationship between age and height in people's 20's because humans don't usually grow taller after like 18.... or maybe thats just me... 
 
+NK: We have similar solutions here!
 
 ##4. Using histograms and Q-Q plots, check whether the quantitative variables seem to be drawn from a normal distribution. Which seem to be and which do not (hint: not all are drawn from the normal distribution)? For those that are not normal, can you determine from which common distribution they are drawn?
 
@@ -243,6 +247,7 @@ zombies$years_of_education
 ```
 these data are independent counts of integer numbers, which would follow the Poisson distribution 
 
+NK: I like that you immediately comment your observations for each plot next to the code. I will do that next time as well. I used ggplot, but it looks like we came to the same conclusions, so I don't think it matters which one you use to visualize the data. Ahhh I forgot to answer the question about which distribution is used for the non-normal data, but your explanation makes sense! 
 
 ##5. Now use the sample() function to sample ONE subset of 30 zombie survivors (without replacement) from this population and calculate the mean and sample standard deviation for each variable.
 
@@ -257,6 +262,8 @@ sd(sample_height)
 ```
 
 ##Also estimate the standard error for each variable, and construct the 95% confidence interval for each mean. Note that for the variables that are not drawn from the normal distribution, you may need to base your estimate of the CIs on slightly different code than for the normal…
+
+NK: it's nice that you included ?sample at the beginning of the chunk to quickly explain its use. 
 
 standard error
 
@@ -406,6 +413,8 @@ x <- mean(sample_years_of_education)
 poisson95CI(x)
 ```
 
+NK: I can't tell how similar our numbers would be, but I see you used poisson95CI here. I would think this would work, given you identified the poisson distribution earlier. I ended up using a for loop to bootstrap my confidence intervals for the non-normally distributed data. 
+
 ##6. Now draw 99 more random samples of 30 zombie apocalypse survivors, and calculate the mean for each variable for each of these samples. Together with the first sample you drew, you now have a set of 100 means for each variable (each based on 30 observations), which constitutes a sampling distribution for each variable. 
 
 ###height 
@@ -521,6 +530,7 @@ this is similar to the standard error value from 5 (0.3956178)
 hist(sampling_distribution) #looks like a normal distribution 
 ```
 
+NK: We have similar answers here. I really wanted to somehow run the data all in one or two goes rather than one column at a time, but I couldn't figure out how. 
 
 Challenges: 
 
